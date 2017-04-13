@@ -79,9 +79,10 @@
                              <td style="text-align: center" class="auto-style5">
                              </td>
                             <td style="text-align: center;" class="auto-style6">
+                                  <asp:Label ID="labCaptcha" runat="server" Text="验证码" Font-Size="9pt" Width="66px"></asp:Label></td>
                  </td>
                             <td style="text-align: left;" class="auto-style7">
-                    <asp:TextBox ID="TextBox1" runat="server" Font-Size="9pt"  Width="123px"></asp:TextBox> <asp:Image ID="Image1" imageUrl="/login.aspx"  runat="server" /></td>
+                    <asp:TextBox ID="txtCaptcha" runat="server" Font-Size="9pt"  Width="123px"></asp:TextBox> <asp:Image ID="Image1" imageUrl="/Captcha.aspx"  runat="server" /></td>
                             <td class="auto-style8">
                                 
                     </td>

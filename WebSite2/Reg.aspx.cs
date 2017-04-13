@@ -151,12 +151,13 @@ public partial class Reg : System.Web.UI.Page
 
                         }
              * */
-            Response.Write("<script language='javascript'>alert('注册成功！！');localtion.href='login.aspx'</script>");
+            Response.Write("<script language='javascript'>alert('注册成功！！');localtion='login.aspx'</script>");
+          
         }
 
         catch (Exception ms)
         {
-
+           
             Console.WriteLine(ms.Message);
 
         }
