@@ -28,6 +28,17 @@ public partial class login : System.Web.UI.Page
     
     protected void btnLogin_Click(object sender, EventArgs e)
     {
+
+        string vCode = Session["ValidateNum"].ToString();
+        
+       
+        if (txtCaptcha.Text.Trim().ToUpper() != vCode.ToUpper())
+        {
+            Response.Write("<script>alert('验证码输入不正确！')</script>");
+            return;
+        }  
+
+       
         //数据库连接字符串，注意这个写法（localdb）后面必须是两个斜杠，因为这中间有个转义的过程
 
         //Initial Catalog=要连接的数据库名
@@ -72,11 +83,7 @@ public partial class login : System.Web.UI.Page
                 //Response.Redirect("login.aspx");  
                 Response.Write("<script language='javascript'>alert('学号或密码有误！！');localtion='login.aspx'</script>");
             }
-            string vCode = Session["ValidateNum"].ToString();
-            if (!(txtCaptcha.Text.Trim().ToUpper() == vCode.ToUpper()))
-            {
-                Response.Write("<script language='javascript'>alert('验证码！！');localtion='login.aspx'</script>");
-            }  
+            
 
 
         }

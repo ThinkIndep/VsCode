@@ -80,12 +80,13 @@
                              </td>
                             <td style="text-align: center;" class="auto-style6">
                                   <asp:Label ID="labCaptcha" runat="server" Text="验证码" Font-Size="9pt" Width="66px"></asp:Label></td>
-                 </td>
+                 
                             <td style="text-align: left;" class="auto-style7">
-                    <asp:TextBox ID="txtCaptcha" runat="server" Font-Size="9pt"  Width="123px"></asp:TextBox> <asp:Image ID="Image1" imageUrl="/Captcha.aspx"  runat="server" /></td>
+                    <asp:TextBox ID="txtCaptcha" runat="server" Font-Size="9pt"  Width="73px"></asp:TextBox> <asp:Image ID="imgAuthCode" imageUrl="/Captcha.aspx"  runat="server" /></td>
                             <td class="auto-style8">
-                                
-                    </td>
+                               <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtCaptcha"
+                        ErrorMessage="校验码必填"></asp:RequiredFieldValidator></td>  
+                  
                         </tr>
                       
                          
@@ -99,11 +100,14 @@
                             <td style="width: 149px; height: 24px;">
                             </td>
                         </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+                    </table>   
+                    </td>
     </div>
     </form>
 </body>
+    <script type="text/javascript">
+        $("#imgAuthCode").click(function () {
+            $(this).attr("src", "Captcha.aspx?code=" + (new Date()).getTime());
+        });
+     </script>
 </html>
