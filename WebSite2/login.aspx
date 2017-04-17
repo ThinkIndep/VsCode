@@ -75,7 +75,7 @@
                     <asp:RequiredFieldValidator ID="rfvPwd" runat="server" ControlToValidate="txtPwd" Font-Size="9pt" Width="104px">用户密码不能为空</asp:RequiredFieldValidator></td>
                         </tr>
 
-                        <tr>
+                        <tr  id="trVcode" style="display:none">
                              <td style="text-align: center" class="auto-style5">
                              </td>
                             <td style="text-align: center;" class="auto-style6">
@@ -84,8 +84,7 @@
                             <td style="text-align: left;" class="auto-style7">
                     <asp:TextBox ID="txtCaptcha" runat="server" Font-Size="9pt"  Width="73px"></asp:TextBox> <asp:Image ID="imgAuthCode" imageUrl="/Captcha.aspx"  runat="server" /></td>
                             <td class="auto-style8">
-                               <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtCaptcha"
-                        ErrorMessage="校验码必填"></asp:RequiredFieldValidator></td>  
+                               </td>  
                   
                         </tr>
                       
@@ -95,16 +94,22 @@
                              </td>
                             <td style="width: 94px; text-align: center;"></td>
                             <td style="width: 225px; text-align: left;">
-                               <asp:Button ID="btnLogin" runat="server" Text="登录" OnClick="btnLogin_Click" Font-Size="9pt" />
+                               <asp:Button ID="btnLogin" runat="server" Text="登录" OnClick="btnLogin_Click"  Font-Size="9pt" />
+                               
                                 &nbsp; &nbsp; <asp:HyperLink NavigateUrl="Reg.aspx" Text="注册"  runat="server" />&nbsp;&nbsp; &nbsp;</td>
                             <td style="width: 149px; height: 24px;">
                             </td>
                         </tr>
                     </table>   
+                      
                     </td>
+                
     </div>
     </form>
+   
 </body>
+
+    <!--刷新验证码-->
     <script type="text/javascript">
         $("#imgAuthCode").click(function () {
             $(this).attr("src", "Captcha.aspx?code=" + (new Date()).getTime());

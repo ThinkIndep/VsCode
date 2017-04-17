@@ -22,21 +22,37 @@ public partial class login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+        Session["ErrorPassNum"] = 0;
+    }
+    protected void btnVcode_Click(object sender, EventArgs e)
+    {
+        Response.Write("<script>document.getElementById('trVcode').style.display = '';</script>");
     }
    
     
     protected void btnLogin_Click(object sender, EventArgs e)
     {
 
-        string vCode = Session["ValidateNum"].ToString();
-        
-       
-        if (txtCaptcha.Text.Trim().ToUpper() != vCode.ToUpper())
+        //输入三次密码错误，则需要填写验证码
+        if (Convert.ToInt32(Session["ErrorPassNum"]) > 3)
         {
-            Response.Write("<script>alert('验证码输入不正确！')</script>");
-            return;
-        }  
+            string vCode = Session["ValidateNum"].ToString();
+
+            if (vCode == null)
+            {
+                Response.Write("<script>alert('验证码超时！')</script>");
+                return;
+            }
+
+            else if (txtCaptcha.Text.Trim().ToUpper() != vCode.ToUpper())
+            {
+                Response.Write("<script>alert('验证码输入不正确！')</script>");
+                return;
+            }
+        }
+     
+            
+        
 
        
         //数据库连接字符串，注意这个写法（localdb）后面必须是两个斜杠，因为这中间有个转义的过程
@@ -81,7 +97,15 @@ public partial class login : System.Web.UI.Page
             {
                 //lblMessage.Text = "无法登陆，用户名或密码错误！";
                 //Response.Redirect("login.aspx");  
+                
+                Session["ErrorPassNum"] = Convert.ToInt32(Session["ErrorPassNum"])+1;
+                string test = Session["ErrorPassNum"].ToString();
+                Response.Write("<script language='javascript'>alert('" + test + "');localtion='login.aspx'</script>");
                 Response.Write("<script language='javascript'>alert('学号或密码有误！！');localtion='login.aspx'</script>");
+                if (Convert.ToInt32(Session["ErrorPassNum"])>3)
+                {
+                    Response.Write("<script>document.getElementById('trVcode').style.display = '';</script>");
+                }
             }
             
 
@@ -106,6 +130,6 @@ public partial class login : System.Web.UI.Page
             con.Close();
 
         }
-        Response.Write("<script language='javascript'>alert('登录成功！！');localtion='Reg.aspx'</script>");
+        
     }
 }

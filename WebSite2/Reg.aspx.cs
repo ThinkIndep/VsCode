@@ -16,7 +16,7 @@ public partial class Reg : System.Web.UI.Page
 {
 
     public string strConnection;
-    SqlConnection conn;
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         //判断是否第一次进入页面，如果是，则绑定数据库；如果不是，则无需绑定。  
