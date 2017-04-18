@@ -9,6 +9,6 @@ public partial class Success : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.StuName.Text = Session["userName"].ToString();
+       
     }
 }

@@ -75,7 +75,7 @@
                     <asp:RequiredFieldValidator ID="rfvPwd" runat="server" ControlToValidate="txtPwd" Font-Size="9pt" Width="104px">用户密码不能为空</asp:RequiredFieldValidator></td>
                         </tr>
 
-                        <tr  id="trVcode" style="display:none">
+                        <tr  id="trVcode">
                              <td style="text-align: center" class="auto-style5">
                              </td>
                             <td style="text-align: center;" class="auto-style6">

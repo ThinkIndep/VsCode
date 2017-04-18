@@ -9,7 +9,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Data.SqlClient;
 
-public partial class StuLogin : System.Web.UI.Page
+public partial class TechLogin : System.Web.UI.Page
 {
     SqlConnection sqlcon;
     SqlCommand sqlcom;
@@ -43,7 +43,12 @@ public partial class StuLogin : System.Web.UI.Page
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         sqlcon = new SqlConnection(strCon);
-        string sqlstr = "update dbo.StuInfo set StuPassword=N'"
+        string sqlstr = "update dbo.StuInfo set StuName=N'"
+        + ((TextBox)(GridView1.Rows[e.RowIndex].Cells[1].Controls[0])).Text.ToString().Trim() + "',StuGender=N'"
+        + ((TextBox)(GridView1.Rows[e.RowIndex].Cells[2].Controls[0])).Text.ToString().Trim() + "',StuNation=N'"
+        + ((TextBox)(GridView1.Rows[e.RowIndex].Cells[3].Controls[0])).Text.ToString().Trim() + "',StuCollege=N'"
+        + ((TextBox)(GridView1.Rows[e.RowIndex].Cells[4].Controls[0])).Text.ToString().Trim() + "',StuMajor=N'"
+        + ((TextBox)(GridView1.Rows[e.RowIndex].Cells[5].Controls[0])).Text.ToString().Trim() + "',StuPassword=N'"
         + ((TextBox)(GridView1.Rows[e.RowIndex].Cells[6].Controls[0])).Text.ToString().Trim() + "',StuInterest=N'"
         + ((TextBox)(GridView1.Rows[e.RowIndex].Cells[7].Controls[0])).Text.ToString().Trim() + "',StuPhone=N'"
         + ((TextBox)(GridView1.Rows[e.RowIndex].Cells[8].Controls[0])).Text.ToString().Trim() + "',StuEmail=N'"
@@ -65,7 +70,7 @@ public partial class StuLogin : System.Web.UI.Page
     }
     public void bind()
     {
-        string sqlstr = "select * from dbo.StuInfo where StuID='" + Session["userName"].ToString() + "'";
+        string sqlstr = "select * from dbo.StuInfo";
         sqlcon = new SqlConnection(strCon);
         SqlDataAdapter myda = new SqlDataAdapter(sqlstr, sqlcon);
         DataSet myds = new DataSet();

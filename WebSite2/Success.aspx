@@ -7,12 +7,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    欢迎您，
-        <asp:Label ID="StuName" runat="server"  Font-Size="9pt" Width="66px"></asp:Label>
+<body onload="Load('login.aspx')">
+    
+    <div id="ShowDiv">
+    
     </div>
-    </form>
+   
 </body>
+    <script language="javascript">
+        var secs = 3; //倒计时的秒数 
+        var URL;
+        function Load(url) {
+            URL = url;
+            for (var i = secs; i >= 0; i--) {
+                window.setTimeout('doUpdate(' + i + ')', (secs - i) * 1000);
+            }
+        }
+        function doUpdate(num) {
+            document.getElementById('ShowDiv').innerHTML = '注册成功！！将在' + num + '秒后自动跳转到登录页面';
+            if (num == 0) { window.location = URL; }
+        }
+</script>
 </html>

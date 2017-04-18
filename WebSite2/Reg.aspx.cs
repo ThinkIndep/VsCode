@@ -131,11 +131,12 @@ public partial class Reg : System.Web.UI.Page
            // string sqltest = "select * from ureg where UserID='" + this.txtUserID.Text + "'";
 
             //cmd.CommandText = "select StuID from dbo.StuInfo"; //T-SQL语句    
+        
             cmd.CommandText = "insert into dbo.StuInfo "
-                    + "(StuID,StuName,StuGender,StuNation,StuCollege,StuMajor,StuPassword,StuInterest,StuPhone,StuEmail)"
+                    + "(StuID,StuName,StuGender,StuNation,StuCollege,StuMajor,StuPassword,StuInterest,StuPhone,StuEmail,role)"
                     + "values( '" + txtUserID.Text + "', N'" + txtLoginName.Text + "',N'" + ddlSex.Text
                     + "',N'" + ddlNationality.Text + "',   N'" + ddlCollege.SelectedItem.Text.ToString() + "',   N'" + ddlMajor.SelectedItem.Text.ToString()
-                    + "', '" + txtPwd.Text + "', N'" + txtInterest.Text + "', '" + txtPhone.Text + "', '" + txtEmail.Text + "' )"; //T-SQL语句   
+                    + "', '" + txtPwd.Text + "', N'" + txtInterest.Text + "', '" + txtPhone.Text + "', '" + txtEmail.Text + "', '" + radRole.Checked + "' )"; //T-SQL语句   
 
             con.Open();                                  //创建连接后需要用Open打开连接，结束后要关闭连接，及时释放资源
 
@@ -151,7 +152,7 @@ public partial class Reg : System.Web.UI.Page
 
                         }
              * */
-            Response.Write("<script language='javascript'>alert('注册成功！！');localtion='login.aspx'</script>");
+            Response.Redirect("Success.aspx");
           
         }
 

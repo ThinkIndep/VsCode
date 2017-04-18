@@ -220,6 +220,20 @@
                                         <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Font-Size="9pt" Width="132px">您输入的Email地址格式不正确，请重新输入</asp:RegularExpressionValidator>
                                     </td>
                                 </tr>
+                                 <tr>
+                                    <td style="width: 189px; text-align: center">
+                                    </td>
+                                    <td style="width: 94px; text-align: center;">
+                                         <asp:Label ID="labRole" runat="server" Text="注册类型" Font-Size="9pt" Width="57px"></asp:Label>
+                                    </td>
+                                    <td style="width: 225px; text-align: left;">
+                                        <asp:RadioButton ID="radRole" runat="server"  Text="教师" Checked="true" GroupName="role"/>
+        <asp:RadioButton ID="radRole2" runat="server" Text="学生" GroupName="role" />
+                                    </td>
+                                    <td style="width: 149px">
+                                        
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td style="width: 189px; text-align: center">
                                     </td>
